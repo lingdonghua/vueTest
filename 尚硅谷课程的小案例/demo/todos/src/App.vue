@@ -42,11 +42,15 @@ export default {
   },
   data(){
     return {
-      list:[
-      {id:1,name:'学习',status:true},
-      {id:2,name:'睡觉',status:false},
-      {id:3,name:'打代码',status:true},
-      ]
+      list:JSON.parse(localStorage.getItem('todos')) || []
+    }
+  },
+  watch:{
+    list:{
+      deep:true,
+      handler(value){
+        localStorage.setItem('todos',JSON.stringify(value))
+      }
     }
   },
   components:{
