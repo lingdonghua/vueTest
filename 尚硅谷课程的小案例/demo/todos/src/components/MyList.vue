@@ -1,7 +1,10 @@
 <template>
   <div>
     <ul class="todo-main">
-        <MyTodo v-for="item in list" :key="item.id" :todo="item"></MyTodo>
+        <transition-group name="donhua" appear>
+          <MyTodo v-for="item in list" :key="item.id" :todo="item"></MyTodo>
+        </transition-group>
+
     </ul>
   </div>
 </template>
@@ -39,5 +42,21 @@ button {
   float: left;
   width: 30px;
   height: 30px;
+}
+.donhua-enter-active {
+  animation: donhua 0.3s linear;
+}
+.donhua-leave-active {
+  animation: donhua 0.3s linear reverse;
+}
+
+
+@keyframes donhua {
+  from{
+    transform: translateX(100%);
+  }
+  to{
+    transform: translateX(0);
+  }
 }
 </style>

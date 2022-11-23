@@ -60,7 +60,11 @@ export default {
   },
   methods:{
     addItem(x){
-       this.list.unshift(x)
+      const flat=this.list.some(item=>item.name===x.name)
+      if(flat){
+        alert(x.name+'已存在')
+      }else
+        this.list.unshift(x)
     },
     //得到todos的最新状态，实时改变
     getStatus(id){
