@@ -2,14 +2,14 @@
 <div id="root">
   <div class="todo-container">
     <div class="todo-wrap">
-      <MyHeader :addItem="addItem"></MyHeader>
-      <MyList :list="list" :change="getStatus" :deletes="deletes"></MyList>
+      <MyHeader @addItem="addItem"></MyHeader>
+      <MyList :list="list"></MyList>
       <MyFooter 
       :allChoose="all_choose" 
-      :getallChoose="getallChoose" 
+      @getallChoose="getallChoose" 
       :count="countByStatus" 
       :totle="list.length" 
-      :clearList="clearList"></MyFooter>
+      @clearList="clearList"></MyFooter>
     </div>
   </div>
 </div>
@@ -83,6 +83,10 @@ export default {
     deletes(id){
       this.list=this.list.filter(item=>item.id!==id)
     }
+  },
+  mounted(){
+    this.$bus.$on('getStatus',this.getStatus)
+    this.$bus.$on('deletes',this.deletes)
   }
 }
 </script>
@@ -111,7 +115,12 @@ body {
   background-color: #da4f49;
   border: 1px solid #bd362f;
 }
-
+.btn-edit{
+  color: #fff;
+  background-color: #70a8c2;
+  border: 1px solid #54a7e7;
+  margin-right: 20px;
+}
 .btn-danger:hover {
   color: #fff;
   background-color: #bd362f;

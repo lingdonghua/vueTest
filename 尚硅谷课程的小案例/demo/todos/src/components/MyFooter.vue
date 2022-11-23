@@ -17,8 +17,8 @@ export default {
       type:Boolean,
       default:false
     },
-    getallChoose:{
-    },
+    // getallChoose:{
+    // },
     count:{
       type:Number,
       default:0
@@ -27,7 +27,7 @@ export default {
       type:Number,
       default:0
     },
-    clearList:{}
+    // clearList:{}
     
   },
   data(){
@@ -36,11 +36,13 @@ export default {
   },
   methods:{
     setAllChoose(e){
-      this.getallChoose(e.target.checked)
+      // this.getallChoose(e.target.checked)
+      this.$emit('getallChoose',e.target.checked)
     },
     //清空列表
     clear(){
-        this.clearList()
+        // this.clearList()
+        this.$emit('clearList')
     }
   }
 }

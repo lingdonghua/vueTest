@@ -7,13 +7,15 @@
 <script>
 import { nanoid } from 'nanoid'
 export default {
-  props:['addItem'],
+  props:['todos'],
  methods:{
     add(e) {
       if(!e.target.value.trim())return alert("内容不能为空")
       const obj={id:nanoid(),name:e.target.value,status:false}
       //通知app组件去添加一个数据对象
-      this.addItem(obj)
+      // this.addItem(obj)
+      // e.target.value=''
+      this.$emit('addItem',obj)
       e.target.value=''
     }
     }

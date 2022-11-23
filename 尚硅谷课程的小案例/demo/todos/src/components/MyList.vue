@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="todo-main">
-        <MyTodo v-for="item in list" :key="item.id" :name="item.name" :status="item.status" :id="item.id" :changer="change" :deletes1="deletes"></MyTodo>
+        <MyTodo v-for="item in list" :key="item.id" :todo="item"></MyTodo>
     </ul>
   </div>
 </template>
@@ -9,9 +9,11 @@
 <script>
 import MyTodo from '@/components/MyTodo.vue'
 export default {
-  props:['list','change','deletes'],
+  props:['list'],
   components:{
     MyTodo
+  },
+  methods:{
   }
 }
 </script>
@@ -32,5 +34,10 @@ export default {
   border-radius: 2px;
   padding-left: 5px;
   margin-top: 10px;
+}
+button {
+  float: left;
+  width: 30px;
+  height: 30px;
 }
 </style>
