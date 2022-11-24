@@ -1,15 +1,19 @@
 <template>
   <div>
     <ul class="todo-main">
-        <transition-group name="donhua" appear>
+        <!-- <transition-group class="animate__animated animate__bounce animate__backInRight" appear>
           <MyTodo v-for="item in list" :key="item.id" :todo="item"></MyTodo>
-        </transition-group>
+        </transition-group> -->
+        <div class="animate__animated animate__bounce animate__backInRight">
+          <MyTodo v-for="item in list" :key="item.id" :todo="item"></MyTodo>
+        </div>
 
     </ul>
   </div>
 </template>
 
 <script>
+import 'animate.css'
 import MyTodo from '@/components/MyTodo.vue'
 export default {
   props:['list'],
